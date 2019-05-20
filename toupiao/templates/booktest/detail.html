@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>详情页</title>
+</head>
+<body>
+<h3>投票信息:{{ string }}</h3>
+<div>
+    <h4>投票信息详情</h4>
+    {% if name %}
+        {% for i in name %}
+            <p>{{ i }},---票数：{{ i.pool }}</p>
+        {% empty %}
+            无
+        {% endfor %}
+    {% else %}
+        无
+    {% endif %}
+</div>
+
+</body>
+</html>
