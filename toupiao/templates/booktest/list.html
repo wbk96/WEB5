@@ -12,7 +12,11 @@
         <form action="{% url 'tou1:list' id %}" method="post">
             {% for i in name %}
             <ul>
-                <li><input type="radio" name="sex" checked value="{{ i.id }}">{{ i.name }}</li>
+                {% if forloop.first %}
+                    <li><input type="radio" name="sex" checked value="{{ i.id }}">{{ i.name }}</li>
+                {% else %}
+                    <li><input type="radio" name="sex"  value="{{ i.id }}">{{ i.name }}</li>
+                {% endif %}
             </ul>
             {% empty %}
             无
@@ -22,6 +26,7 @@
         {% endif %}
             <input type="submit" value="提交">
             </form>
+        <p><a href="{% url 'tou1:addtemp' id %}">添加数据</a></p>
     </div>
 </body>
 </html>
