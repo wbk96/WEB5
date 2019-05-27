@@ -6,17 +6,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-<span>用户：{{ username }}</span>&nbsp;&nbsp;&nbsp;<a href="{% url 'tou1:logout' %}"><span>登出</span></a>
+<span>用户：{{ request.user }}</span>&nbsp;&nbsp;&nbsp;<a href="{% url 'tou1:logout' %}"><span>登出</span></a>
 <h3>投票信息汇总：</h3>
 <div class="container">
-
     {% if ti %}
         <ol>
-        {% for i in ti %}
+            {% for i in ti %}
             <li><a href="{% url 'tou1:list' i.id %} ">{{ i.string }}</a></li>
-        {% empty %}
-            没有标题
-        {% endfor %}
+            {% empty %}
+                没有标题
+            {% endfor %}
         </ol>
     {% else %}
         没传过来
